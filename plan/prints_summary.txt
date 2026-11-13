@@ -1,0 +1,11 @@
+PEGBOARDLAB studio prints  2026-11-05 23:17
+holder designs 62  ok 62  not ok 0
+parts to print 92 holders + 92 spines = 184
+solid volume 5660 cm³  ·  printed mass ≈ 3404 g (holders 2125 + spines 1279)
+ABS-GF at 1.08 g/cm³, 4 walls / 25 % infill; add ~12 % for purge, brims and failures → 3813 g
+rolls of 1 kg: 3.81
+drywall screws Ø3.5 × 15 csk: 233
+
+imperial_19: 45 holders, 1811 g
+metric_4: 47 holders, 1593 g
+

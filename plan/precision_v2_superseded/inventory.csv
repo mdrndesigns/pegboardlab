@@ -1,0 +1,7 @@
+id,item,n,status,holder_g,spine_g,holder_bed,spine_bed,screws,unsupported,valid,open_edges,interference
+CAL-DF,Digital caliper · face-out · beam 4.5,1,ok,13.8,5.8,34 × 37 × 62,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",14.6,True,0,0.0
+CAL-MF,Metal caliper · face-out · beam 3.5,1,ok,12.7,5.8,34 × 33 × 62,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",14.6,True,0,0.0
+MIC,Micrometer · Ø19 handle · U 20 + keep lips,1,ok,16.2,5.8,50 × 43 × 62,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",14.6,True,0,0.0
+RULE,Steel rules ×4 · protractor · compasses ×7,1,ok,76.3,5.8,154 × 55 × 62,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",14.6,True,0,0.0
+WRENCH,Spanners 6-14 + 10 ×3 + adjustable · edge-on,1,ok,61.7,5.8,146 × 47 × 62,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",14.6,True,0,0.0
+SOCKET,Wera 8000 A · Stanley ratchet · extension · sockets ×6,1,ok,85.3,5.8,206 × 53 × 62,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",14.6,True,0,0.0

@@ -1,0 +1,14 @@
+HAND TOOLS + WERA · imperial board A · 2026-11-06 16:40
+designs 7 · ok 7
+prints: 17 arms + 17 spines + 5 rack plates
+ABS-GF ≈ 545 g (+12 % → 610 g)
+Ø3.5 × 15 csk drywall screws: 54
+
+  R-PLI   pliers ×4 (red/black), cutters / crimpers ×5, aviation snips, end nipper, 1 spare (two racks)
+  R-DRV   front: Irwin long ×2 + stubby ×2, chisel, awl, marking knife · back: Wera Kraftform ×6 (one now, room for five more)
+  R-HEX   Wera 950/9 Hex-Plus Multicolour 1.5-10, long legs down, short legs resting on the plate
+  R-MEAS  digital caliper (beam down, jaws up), Stanley 8 m tape (clip over the left front edge), markers ×4, scriber
+  A60     Wera Tool-Check PLUS (190 × 100 × 35) standing on its long edge on a pair
+  N30     scissors, adjustable wrench, spanner, micrometer 0-25, protractor - one each
+
+not ok:

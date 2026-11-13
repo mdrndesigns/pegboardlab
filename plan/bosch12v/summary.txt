@@ -1,0 +1,17 @@
+BOSCH 12V KIT · imperial board A · 2026-11-06 16:39
+designs 8 · ok 8
+prints: 16 arms + 16 spines + 2 shelves
+ABS-GF ≈ 381 g (+12 % purge / brims → 426 g)
+Ø3.5 × 15 csk drywall screws: 42
+
+placement: plan/boardA (board A packed with the hand tools + Wera, 2026-11-06); bag moves to a metric board
+
+measure before printing the pairs that depend on it:
+  - GKS 12V-26 base plate: length × width, and how far the blade plane sits in from the base's front edge (notch is 30 deep, 92 long, centred)
+  - GKS 12V-26 lower guard: length where it leaves the base (notch 92) - turn the saw so the blade faces out
+  - GSR 120-LI and GWS 12V-76: grip width just under the motor / gear head (must pass 49.8 between the arms) and housing depth (≤ 74 inside the A80 lip)
+  - GRO 12V-35 body Ø where it lies on the cradles (seat cut for Ø56, spec 55)
+  - GluePen barrel Ø (seat cut for Ø38, photo estimate)
+  - Blue accessory case thickness (≤ 54 on A60, else use A80) - drill-bit box and small box thickness (≤ 34 on A40)
+
+not ok:

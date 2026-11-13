@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PEGBOARDLAB</title>
+<style>
+  :root{ --blue:#0000FF; --black:#000; --white:#fff; --hair:0.5px solid #000; --rule:1px solid #000; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; background:var(--white); color:var(--black);
+        font-size:11px; line-height:1.35; -webkit-font-smoothing:antialiased;
+        display:grid; grid-template-columns:340px 1fr; height:100vh; }
+  #panel{border-right:var(--rule); overflow-y:auto; display:flex; flex-direction:column}
+  #brand{ padding:14px 16px 12px; border-bottom:var(--rule); display:flex; justify-content:space-between; align-items:baseline; }
+  #brand h1{font-size:15px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase}
+  #brand span{font-size:9px; letter-spacing:0.18em; text-transform:uppercase}
+  .group{border-bottom:var(--rule); padding:12px 16px 14px}
+  .group > h2{ font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:10px; }
+  .group.hidden{display:none}
+  .ctl{margin-bottom:11px}
+  .ctl.hidden{display:none}
+  .ctl .row{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px}
+  .ctl label{font-size:10px; letter-spacing:0.06em; text-transform:uppercase}
+  .ctl input.list{ width:100%; border:0; border-bottom:var(--rule); background:transparent; font-family:inherit; font-size:11px; color:var(--blue);
+                   font-weight:700; padding:4px 0; outline:none; letter-spacing:0.02em }
+  .ctl input.list::placeholder{color:#999; font-weight:400}
+  .ctl .note{display:none; text-align:right; margin-top:3px; color:var(--blue); font-size:9px; letter-spacing:0.02em}
+  .ctl .note.on{display:block}
+  .ctl input.num{ width:58px; border:none; border-bottom:var(--hair); text-align:right; font-family:inherit;
+                  font-size:10px; font-weight:700; color:var(--blue); background:transparent; font-variant-numeric:tabular-nums; }
+  .ctl input.num:focus{outline:none; border-bottom-color:var(--blue)}
+  input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:11px; background:transparent; display:block; cursor:pointer; }
+  input[type=range]::-webkit-slider-runnable-track{height:1px; background:var(--black)}
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:9px; height:9px; margin-top:-4px; background:var(--blue); border:none; border-radius:0; }
+  input[type=range]::-moz-range-track{height:1px; background:var(--black)}
+  input[type=range]::-moz-range-thumb{ width:9px; height:9px; background:var(--blue); border:none; border-radius:0; }
+  .seglabel{font-size:9px; letter-spacing:0.16em; text-transform:uppercase; margin:0 0 4px}
+  .seg{display:grid; grid-auto-flow:column; grid-auto-columns:1fr; border:var(--rule); margin-bottom:11px}
+  .seg.wrap{grid-auto-flow:row; grid-template-columns:repeat(var(--cols,3),1fr)}
+  .seg button{ border:none; border-right:var(--hair); border-bottom:none; border-radius:0; background:var(--white); color:var(--black);
+               padding:6px 2px; font-family:inherit; font-size:9px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; }
+  .seg.wrap button{border-bottom:var(--hair)}
+  .seg button:last-child{border-right:none}
+  .seg button.on{background:var(--blue); color:var(--white)}
+  .seg button:hover:not(.on){background:#eee}
+  .toggle{display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none; margin-bottom:11px}
+  .toggle .box{width:11px; height:11px; border:1px solid var(--black); flex:0 0 auto}
+  .toggle input{display:none}
+  .toggle input:checked + .box{background:var(--blue); border-color:var(--blue)}
+  .toggle span{font-size:10px; letter-spacing:0.06em; text-transform:uppercase}
+  select.pick{ width:100%; border:var(--rule); border-radius:0; background:var(--white); font-family:inherit; font-size:10px;
+               letter-spacing:0.04em; padding:6px 6px; appearance:none; -webkit-appearance:none; margin-bottom:8px; cursor:pointer; }
+  select.pick:focus{outline:none; color:var(--blue)}
+  textarea.txt{ width:100%; border:var(--rule); border-radius:0; background:transparent; font-family:inherit; font-size:11px;
+                letter-spacing:0.04em; padding:5px 6px; margin-bottom:8px; resize:vertical; display:block; }
+  textarea.txt:focus{outline:none; border-color:var(--blue); color:var(--blue)}
+  input[type=file]{font-size:9px; width:100%; margin-bottom:6px; font-family:inherit}
+  .note{font-size:9px; letter-spacing:0.04em; line-height:1.5; margin-bottom:10px}
+  .note b{color:var(--blue)}
+  #export{padding:12px 16px 16px; margin-top:auto; border-top:var(--rule)}
+  #name{ width:100%; border:none; border-bottom:var(--rule); padding:4px 0 5px; font-family:inherit; font-size:11px;
+         letter-spacing:0.06em; background:transparent; margin-bottom:10px; border-radius:0; }
+  #name:focus{outline:none; border-bottom-color:var(--blue); color:var(--blue)}
+  button.act{ width:100%; padding:8px; border:var(--rule); border-radius:0; background:var(--white); color:var(--black);
+              font-family:inherit; font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; display:block; }
+  button.act:hover{background:var(--blue); color:var(--white); border-color:var(--blue)}
+  /* viewport */
+  #view{position:relative; overflow:hidden}
+  canvas{display:block; width:100%; height:100%}
+  #hud{ position:absolute; left:18px; top:14px; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; pointer-events:none; display:flex; gap:14px; align-items:center }
+  #hud b{color:var(--blue)}
+  #hud button{ pointer-events:auto; border:var(--rule); background:var(--white); color:var(--black); font-family:inherit; font-size:9px; font-weight:700;
+               letter-spacing:0.12em; text-transform:uppercase; padding:3px 8px; cursor:pointer; border-radius:0 }
+  #hud button.on{background:var(--blue); color:var(--white); border-color:var(--blue)}
+  #readout{ position:absolute; right:18px; top:14px; width:320px; font-size:9px; letter-spacing:0.06em;
+            background:rgba(255,255,255,0.92); border:var(--rule); padding:8px 10px; }
+  #readout dl{display:grid; grid-template-columns:auto 1fr; column-gap:10px; row-gap:2px}
+  #readout dt{text-transform:uppercase; letter-spacing:0.12em; white-space:nowrap}
+  #readout dd{font-variant-numeric:tabular-nums}
+  #readout dd.hot{color:var(--blue); font-weight:700}
+  #warn{ position:absolute; left:18px; bottom:16px; max-width:60%; font-size:10px; letter-spacing:0.04em; line-height:1.5; }
+  #warn .w::before{content:"— "; color:var(--blue)}
+  #err{ position:absolute; left:18px; right:18px; bottom:16px; font-size:11px; letter-spacing:0.04em; color:var(--blue); font-weight:700; }
+  #stale{ position:absolute; left:0; right:0; top:0; height:2px; background:var(--blue); transform:scaleX(0); transform-origin:left; transition:transform .25s }
+  #stale.on{transform:scaleX(1)}
+  #family-tabs{display:none}
+</style>
+</head>
+<body>
+<div id="panel">
+  <div id="brand"><h1>Pegboardlab</h1><span>pegboard accessories</span></div>
+  <div id="controls"></div>
+  <div id="export">
+    <input id="name" value="pegboard_part" spellcheck="false">
+    <button class="act" id="btn-export">Export STEP + STL + 3MF + script</button>
+  </div>
+</div>
+<div id="view">
+  <canvas id="c"></canvas>
+  <div id="stale"></div>
+  <div id="hud"><span><b>Pegboardlab</b> · drag to orbit · wheel to zoom</span><button id="dims-btn" class="on">Dimensions</button></div>
+  <div id="readout"><dl id="dl"></dl></div>
+  <div id="warn"></div>
+  <div id="err"></div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three":"/vendor/three/three.module.js",
+               "three/addons/":"/vendor/three/examples/jsm/" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+
+/* ---------- state + controls ---------- */
+let state = {}, catalog = {}, schema = [];
+const ctls = {};           // key -> {wrap, item, set(v), paint()}
+const groups = {};         // group name -> element
+const controls = document.getElementById('controls');
+
+function visible(item){
+  if (item.family && state.family !== item.family) return false;
+  const s = item.show;
+  if (!s) return true;
+  const v = state[s.key];
+  if (s.in) return s.in.map(String).includes(String(v));
+  if (s.not) return !s.not.map(String).includes(String(v));
+  if (s.gt !== undefined) return Number(v) > s.gt;
+  if (s.eq !== undefined) return String(v) === String(s.eq);
+  return true;
+}
+
+function groupEl(name, family){
+  const id = (family ? family + ':' : '') + name;
+  if (groups[id]) return groups[id];
+  const g = document.createElement('div'); g.className = 'group'; g.dataset.family = family || '';
+  const h = document.createElement('h2'); h.textContent = name; g.appendChild(h);
+  controls.appendChild(g); groups[id] = g; return g;
+}
+
+function fmt(v, step){ const d = step < 1 ? Math.min(3, Math.ceil(-Math.log10(step))) : 0; return Number(v).toFixed(d); }
+
+function makeList(item, g){
+  const wrap = document.createElement('div'); wrap.className = 'ctl';
+  const row = document.createElement('div'); row.className = 'row';
+  const lab = document.createElement('label'); lab.textContent = item.label;
+  row.appendChild(lab); wrap.appendChild(row);
+  const inp = document.createElement('input'); inp.type = 'text'; inp.className = 'list'; inp.placeholder = item.hint || 'comma-separated, blank = slider';
+  inp.spellcheck = false;
+  const note = document.createElement('span'); note.className = 'note';
+  wrap.appendChild(inp); wrap.appendChild(note); g.appendChild(wrap);
+  const fmt = v => Array.isArray(v) ? v.map(e => Array.isArray(e) ? e.join('x') : e) : v;
+  state[item.key] = fmt(state[item.key]);          // pairs travel as 'a x b' tokens (the query string flattens arrays)
+  const paint = () => { const v = state[item.key] = fmt(state[item.key]); inp.value = Array.isArray(v) ? v.join(', ') : (v || ''); };
+  paint();
+  inp.addEventListener('change', () => { state[item.key] = inp.value.split(/[,;]/).map(s => s.trim()).filter(Boolean); refresh(); schedule(); });
+  ctls[item.key] = { wrap, item, paint, note, set: v => { state[item.key] = v; paint(); } };
+}
+
+function makeSlider(item, g){
+  const wrap = document.createElement('div'); wrap.className = 'ctl';
+  const row = document.createElement('div'); row.className = 'row';
+  const lab = document.createElement('label'); lab.textContent = item.label;
+  const note = document.createElement('span'); note.className = 'note';
+  const num = document.createElement('input'); num.className = 'num'; num.type = 'text';
+  row.appendChild(lab); row.appendChild(num);
+  const rng = document.createElement('input'); rng.type = 'range'; rng.min = item.min; rng.max = item.max; rng.step = item.step;
+  wrap.appendChild(row); wrap.appendChild(rng); wrap.appendChild(note); g.appendChild(wrap);
+  const paint = () => { rng.value = state[item.key]; num.value = fmt(state[item.key], item.step); };
+  rng.addEventListener('input', () => { state[item.key] = Number(rng.value); num.value = fmt(rng.value, item.step); schedule(); });
+  num.addEventListener('change', () => { const v = Number(num.value); if (!isNaN(v)) { state[item.key] = v; paint(); refresh(); schedule(); } });
+  ctls[item.key] = { wrap, item, paint, note, set: v => { state[item.key] = v; paint(); } };
+}
+
+function makeSeg(item, g){
+  const wrap = document.createElement('div'); wrap.className = 'ctl';
+  const lab = document.createElement('div'); lab.className = 'seglabel'; lab.textContent = item.label;
+  const seg = document.createElement('div'); seg.className = 'seg' + (item.wrap ? ' wrap' : '');
+  if (item.wrap) seg.style.setProperty('--cols', item.wrap);
+  const btns = [];
+  item.options.forEach(([val, label]) => {
+    const b = document.createElement('button'); b.textContent = label; b.dataset.val = val;
+    b.addEventListener('click', () => { state[item.key] = typeof val === 'number' ? val : val; paint(); refresh(); schedule(); if (item.key === 'board') applyBoard(val); });
+    seg.appendChild(b); btns.push(b);
+  });
+  wrap.appendChild(lab); wrap.appendChild(seg); g.appendChild(wrap);
+  const paint = () => btns.forEach(b => b.classList.toggle('on', String(b.dataset.val) === String(state[item.key])));
+  ctls[item.key] = { wrap, item, paint, set: v => { state[item.key] = v; paint(); } };
+}
+
+function makeToggle(item, g){
+  const wrap = document.createElement('label'); wrap.className = 'toggle ctl';
+  const inp = document.createElement('input'); inp.type = 'checkbox';
+  const box = document.createElement('span'); box.className = 'box';
+  const sp = document.createElement('span'); sp.textContent = item.label;
+  wrap.appendChild(inp); wrap.appendChild(box); wrap.appendChild(sp); g.appendChild(wrap);
+  inp.addEventListener('change', () => { state[item.key] = inp.checked; refresh(); schedule(); });
+  const paint = () => { inp.checked = !!state[item.key]; };
+  ctls[item.key] = { wrap, item, paint, set: v => { state[item.key] = v; paint(); } };
+}
+
+function makeSelect(item, g){
+  const wrap = document.createElement('div'); wrap.className = 'ctl';
+  const lab = document.createElement('div'); lab.className = 'seglabel'; lab.textContent = item.label;
+  const sel = document.createElement('select'); sel.className = 'pick';
+  item.options.forEach(([val, label]) => { const o = document.createElement('option'); o.value = val; o.textContent = label; sel.appendChild(o); });
+  wrap.appendChild(lab); wrap.appendChild(sel); g.appendChild(wrap);
+  sel.addEventListener('change', () => { state[item.key] = sel.value; if (item.key === 'board') applyBoard(sel.value); refresh(); schedule(); });
+  const paint = () => { sel.value = state[item.key]; };
+  ctls[item.key] = { wrap, item, paint, set: v => { state[item.key] = v; paint(); } };
+}
+
+function makeText(item, g){
+  const wrap = document.createElement('div'); wrap.className = 'ctl';
+  const lab = document.createElement('div'); lab.className = 'seglabel'; lab.textContent = item.label;
+  const ta = document.createElement('textarea'); ta.className = 'txt'; ta.rows = 2; ta.spellcheck = false;
+  wrap.appendChild(lab); wrap.appendChild(ta); g.appendChild(wrap);
+  ta.addEventListener('input', () => { state[item.key] = ta.value; schedule(400); });
+  const paint = () => { ta.value = state[item.key]; };
+  ctls[item.key] = { wrap, item, paint, set: v => { state[item.key] = v; paint(); } };
+}
+
+function makeSvg(item, g){
+  const wrap = document.createElement('div'); wrap.className = 'ctl';
+  const lab = document.createElement('div'); lab.className = 'seglabel'; lab.textContent = 'SVG · filled outlines only';
+  const f = document.createElement('input'); f.type = 'file'; f.accept = '.svg,image/svg+xml';
+  const note = document.createElement('div'); note.className = 'note'; note.textContent = 'No SVG loaded.';
+  wrap.appendChild(lab); wrap.appendChild(f); wrap.appendChild(note); g.appendChild(wrap);
+  f.addEventListener('change', async () => {
+    const file = f.files[0]; if (!file) return;
+    const res = await fetch('/svg', { method:'POST', headers:{'Content-Type':'image/svg+xml'}, body: await file.text() });
+    const j = await res.json();
+    if (!res.ok) { note.textContent = j.errors.join(' '); return; }
+    state.brand_svg = j.key; note.innerHTML = `<b>${file.name}</b> · ${j.paths || '?'} outlines`; schedule();
+  });
+  ctls[item.key] = { wrap, item, paint: () => {}, set: v => { state[item.key] = v; } };
+}
+
+function buildControls(){
+  schema.forEach(item => {
+    const g = groupEl(item.group, item.family);
+    ({ slider: makeSlider, seg: makeSeg, toggle: makeToggle, select: makeSelect, text: makeText, svg: makeSvg, list: makeList })[item.type](item, g);
+  });
+}
+
+function refresh(){
+  Object.values(ctls).forEach(c => { c.paint(); c.wrap.classList.toggle('hidden', !visible(c.item)); });
+  Object.values(groups).forEach(g => {
+    const anyVisible = [...g.querySelectorAll('.ctl')].some(e => !e.classList.contains('hidden'));
+    g.classList.toggle('hidden', !anyVisible);
+  });
+}
+
+function applyBoard(key){
+  const b = catalog.boards[key]; if (!b) return;
+  catalog.geom_keys.forEach(k => { if (ctls[k]) ctls[k].set(b[k]); else state[k] = b[k]; });
+  refresh();
+}
+
+/* ---------- readout ---------- */
+const dl = document.getElementById('dl');
+function paintStats(s){
+  dl.innerHTML = '';
+  const d = s.derived || {};
+  const add = (k, v, hot) => { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; if (hot) dd.className = 'hot'; dl.appendChild(dt); dl.appendChild(dd); };
+  add('part', `${s.part.bbox.join(' × ')} mm · ${s.part.volume} cm³` + (s.part.valid ? '' : ' · INVALID'));
+  Object.entries(d).forEach(([k, v]) => {
+    if (k === 'overhang_mm2' || k === 'overhang_worst') return;
+    add(k.replace(/_/g, ' '), String(v), k === 'pause_at' || k === 'stud_d');
+  });
+  if (d.overhang_mm2 !== undefined) add('unsupported', `${d.overhang_mm2} mm² · ${d.overhang_note}`, d.overhang_mm2 > 250);
+  const w = document.getElementById('warn'); w.innerHTML = '';
+  (s.warnings || []).forEach(t => { const e = document.createElement('div'); e.className = 'w'; e.textContent = t; w.appendChild(e); });
+  const notes = s.notes || {};
+  Object.values(ctls).forEach(c => { if (c.note) { const t = notes[c.item.key] || ''; c.note.textContent = t; c.note.classList.toggle('on', !!t); } });
+}
+
+/* ---------- three.js ---------- */
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true });
+renderer.setPixelRatio(window.devicePixelRatio || 1);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0xffffff);
+const dimGroup = new THREE.Group(); scene.add(dimGroup);
+const camera = new THREE.PerspectiveCamera(38, 1, 1, 6000); camera.position.set(120, 90, 200); camera.up.set(0, 1, 0);
+const controls3 = new OrbitControls(camera, canvas); controls3.enableDamping = true;
+scene.add(new THREE.HemisphereLight(0xffffff, 0xbbbbbb, 2.1));
+const keyL = new THREE.DirectionalLight(0xffffff, 2.0); keyL.position.set(1, -1.4, 2); scene.add(keyL);
+const fill = new THREE.DirectionalLight(0xffffff, 0.7); fill.position.set(-1.2, 0.8, 0.4); scene.add(fill);
+const material = new THREE.MeshStandardMaterial({ color:0x0000ff, metalness:0, roughness:0.62 });
+const brandMaterial = new THREE.MeshStandardMaterial({ color:0xdddddd, metalness:0, roughness:0.6 });
+const ctxMaterial = new THREE.MeshStandardMaterial({ color:0xe6e6e6, metalness:0, roughness:0.9, transparent:true, opacity:0.6 });
+const edgeMat = new THREE.LineBasicMaterial({ color:0x000000 });
+const ctxEdgeMat = new THREE.LineBasicMaterial({ color:0x000000, transparent:true, opacity:0.3 });
+const loader = new STLLoader();
+let mesh = null, edges = null, ctxMesh = null, ctxEdges = null, lastCtxKey = null, bedGrid = null, lastSize = 0, lastPrintView = false;
+function resize(){ const w = canvas.clientWidth, h = canvas.clientHeight; if (canvas.width !== w * renderer.getPixelRatio() || canvas.height !== h * renderer.getPixelRatio()) { renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); if (dimGroup.children.length) sizeSprites(); } }
+function tick(){ resize(); controls3.update(); renderer.render(scene, camera); requestAnimationFrame(tick); }
+tick();
+
+let lastFrameKey = '';
+function frameKey(){ const f = state.family; return f + ':' + (state[Object.keys(state).find(k => k.endsWith('_tool') && k.startsWith(f.slice(0, 2))) ] || ''); }
+function showPart(buffer, firstLoad, brandTris, printView){
+  const fk = frameKey(); const changed = fk !== lastFrameKey; lastFrameKey = fk;
+  if (mesh) { scene.remove(mesh); scene.remove(edges); }
+  const geo = loader.parse(buffer);
+  if (brandTris > 0) {
+    const total = geo.attributes.position.count / 3;
+    geo.addGroup(0, (total - brandTris) * 3, 0); geo.addGroup((total - brandTris) * 3, brandTris * 3, 1);
+    mesh = new THREE.Mesh(geo, [material, brandMaterial]);
+  } else mesh = new THREE.Mesh(geo, material);
+  scene.add(mesh);
+  edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo, 24), edgeMat); scene.add(edges);
+  geo.computeBoundingBox();
+  if (bedGrid) { scene.remove(bedGrid); bedGrid = null; }
+  if (printView) {
+    const s = geo.boundingBox.getSize(new THREE.Vector3());
+    bedGrid = new THREE.GridHelper(Math.max(s.x, s.y) * 2 + 40, 20, 0x000000, 0xcccccc);
+    bedGrid.rotation.x = Math.PI / 2; const c = geo.boundingBox.getCenter(new THREE.Vector3()); bedGrid.position.set(c.x, c.y, 0); scene.add(bedGrid);
+  }
+  const sz = geo.boundingBox.getSize(new THREE.Vector3()).length();
+  if (firstLoad || changed || printView !== lastPrintView || Math.abs(sz - lastSize) / Math.max(sz, 1) > 0.25) {
+    const c = geo.boundingBox.getCenter(new THREE.Vector3());
+    controls3.target.copy(c);
+    if (printView) { camera.up.set(0, 0, 1); camera.position.set(c.x + sz * 1.15, c.y - sz * 1.4, c.z + sz * 1.0); }
+    else { camera.up.set(0, 1, 0); camera.position.set(c.x + sz * 1.0, c.y + sz * 0.7, c.z + sz * 1.6); }   // wall view: Y up, looking at the board
+  }
+  lastSize = sz; lastPrintView = printView;
+}
+/* ---------- dimensions ---------- */
+let dimsOn = true, lastDims = [];
+const dimMat = new THREE.LineBasicMaterial({ color:0x000000, depthTest:false, transparent:true, opacity:0.95 });
+const LABEL_PX = 13;
+function labelSprite(text){
+  const pad = 7, fs = 26;
+  const c = document.createElement('canvas'); const g = c.getContext('2d');
+  const font = `bold ${fs}px "Helvetica Neue", Helvetica, Arial, sans-serif`;
+  g.font = font; const tw = Math.ceil(g.measureText(text).width);
+  c.width = tw + 2 * pad; c.height = fs + pad;
+  g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+  g.strokeStyle = '#000'; g.lineWidth = 2; g.strokeRect(1, 1, c.width - 2, c.height - 2);
+  g.font = font; g.fillStyle = '#000'; g.textBaseline = 'middle'; g.fillText(text, pad, c.height / 2 + 1);
+  const tex = new THREE.CanvasTexture(c); tex.minFilter = THREE.LinearFilter; tex.colorSpace = THREE.SRGBColorSpace;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest:false, sizeAttenuation:false }));
+  sp.userData.aspect = c.width / c.height; sp.renderOrder = 30;
+  return sp;
+}
+function sizeSprites(){
+  const h = canvas.clientHeight || 1, w = canvas.clientWidth || 1;
+  const sy = 2 * LABEL_PX / (h * camera.projectionMatrix.elements[5]);     // sizeAttenuation off: scale is NDC / P[1][1]
+  dimGroup.traverse(o => { if (o.isSprite) o.scale.set(sy * o.userData.aspect * h / w, sy, 1); });
+}
+function showDims(dims){
+  lastDims = dims || [];
+  while (dimGroup.children.length) { const o = dimGroup.children.pop(); if (o.geometry) o.geometry.dispose(); if (o.material && o.material.map) o.material.map.dispose(); }
+  if (!dimsOn || !lastDims.length) return;
+  const pts = [];
+  const V = a => new THREE.Vector3(a[0], a[1], a[2]);
+  for (const d of lastDims) {
+    const a = V(d.a), b = V(d.b), o = V(d.o);
+    if (o.length() < 1e-6) continue;
+    const A = a.clone().add(o), B = b.clone().add(o);
+    const on = o.clone().normalize(), ext = o.clone().multiplyScalar(1.15);
+    pts.push(a, a.clone().add(ext), b, b.clone().add(ext), A, B);                      // extension lines + dimension line
+    const dir = B.clone().sub(A); const L = dir.length();
+    if (L > 1e-6) {
+      dir.normalize();
+      const tick = dir.clone().add(on).normalize().multiplyScalar(1.6);                 // 45° ticks
+      pts.push(A.clone().sub(tick), A.clone().add(tick), B.clone().sub(tick), B.clone().add(tick));
+    }
+    const sp = labelSprite(d.t); sp.position.copy(A).add(B).multiplyScalar(0.5).add(on.clone().multiplyScalar(0.5)); dimGroup.add(sp);
+  }
+  const geo = new THREE.BufferGeometry().setFromPoints(pts);
+  const lines = new THREE.LineSegments(geo, dimMat); lines.renderOrder = 25; dimGroup.add(lines);
+  sizeSprites();
+}
+document.getElementById('dims-btn').addEventListener('click', e => { dimsOn = !dimsOn; e.target.classList.toggle('on', dimsOn); showDims(lastDims); });
+
+function showCtx(buffer){
+  if (ctxMesh) { scene.remove(ctxMesh); scene.remove(ctxEdges); ctxMesh = ctxEdges = null; }
+  if (buffer.byteLength <= 84) return;
+  const geo = loader.parse(buffer);
+  ctxMesh = new THREE.Mesh(geo, ctxMaterial); ctxMesh.renderOrder = 1; scene.add(ctxMesh);
+  ctxEdges = new THREE.LineSegments(new THREE.EdgesGeometry(geo, 30), ctxEdgeMat); scene.add(ctxEdges);
+}
+
+/* ---------- rebuild ---------- */
+let pending = null, ctrl = null, first = true;
+function schedule(ms){ clearTimeout(pending); pending = setTimeout(rebuild, ms || 180); }
+function setStale(on){ document.getElementById('stale').classList.toggle('on', on); }
+async function rebuild(){
+  if (ctrl) ctrl.abort();
+  ctrl = new AbortController(); setStale(true);
+  const err = document.getElementById('err'); err.textContent = '';
+  try {
+    const res = await fetch('/preview.stl?' + new URLSearchParams(state), { signal: ctrl.signal });
+    if (!res.ok) { const j = await res.json(); err.textContent = j.errors.join(' · '); setStale(false); return; }
+    const stats = JSON.parse(res.headers.get('X-Stats'));
+    showPart(await res.arrayBuffer(), first, stats.brand_tris, stats.print_view); first = false;
+    paintStats(stats);
+    showDims(stats.dims);
+    if (stats.print_view) { showCtx(new ArrayBuffer(0)); lastCtxKey = null; }
+    else if (stats.context_key !== lastCtxKey) {
+      const c = await fetch('/context.stl?' + new URLSearchParams(state), { signal: ctrl.signal });
+      if (c.ok) { showCtx(await c.arrayBuffer()); lastCtxKey = stats.context_key; }
+    }
+  } catch (e) { if (e.name !== 'AbortError') err.textContent = 'Preview failed: ' + e; }
+  setStale(false);
+}
+
+/* ---------- boot ---------- */
+async function boot(){
+  const j = await (await fetch('/defaults')).json();
+  state = { ...j.defaults }; catalog = j.catalog; schema = catalog.schema;
+  buildControls(); refresh();
+  window.PBL = { get state(){ return state; }, set(k, v){ if (ctls[k]) ctls[k].set(v); else state[k] = v; refresh(); schedule(); }, rebuild, refresh };
+  document.getElementById('btn-export').addEventListener('click', () => {
+    const name = document.getElementById('name').value || 'pegboard_part';
+    window.location = '/export?' + new URLSearchParams({ ...state, name });
+  });
+  rebuild();
+}
+boot();
+</script>
+</body>
+</html>

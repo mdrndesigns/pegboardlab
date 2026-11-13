@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Local archives and Claude Code session files
+*.tgz
+.claude/settings.local.json
+
+# Samples: only the preview images and one print-ready model go to GitHub.
+# Everything else in samples/ is regenerated locally by tests/batch.py.
+samples/*
+!samples/*.png
+!samples/split_rack_driver.3mf

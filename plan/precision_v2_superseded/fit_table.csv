@@ -1,0 +1,15 @@
+holder,tool,measured,cut,note
+CAL-DF,digital caliper beam,4.5 × 16,slot 5.1 × 17,"+0.6 / +1.0, 24 deep, 1.2 funnel"
+CAL-MF,metal caliper beam,3.5 × 16,slot 4.1 × 17,"+0.6 / +1.0, 24 deep, 1.2 funnel"
+MIC,micrometer handle,Ø19,U 20,"+1.0, frame rests on top, 3 mm keep lips"
+RULE,steel rules,≤ 1.2 × ≤ 26,"pocket 1.8 × 28, 20 deep",4 stacked 6 apart
+RULE,protractor arm,≤ 2.5 × ≤ 28,slot 3.6 × 30,"through, head rests on top"
+RULE,compasses / dividers / pencils,,Ø8 · Ø10 ×2 · Ø12 ×3 · Ø14,"20 deep, floor 4"
+WRENCH,spanners 6-9 (edge-on),2-3 thick,slot 3.6 × 11 ×4,head rests across the slot
+WRENCH,spanners 10,4-4.5 thick,slot 5.0 × 14 ×3,head rests across the slot
+WRENCH,spanners 11-14,5-5.5 thick,slot 6.0 × 17 ×4,head rests across the slot
+WRENCH,small adjustable,5.6-6 thick,slot 6.8 × 21,head rests across the slot
+SOCKET,Wera 8000 A neck,Ø10.5-11,U 11.8,"+0.8, keep lips"
+SOCKET,Stanley ratchet neck / extension,Ø12.5-13,U 13.8,"+0.8, keep lips"
+SOCKET,1/4 in sockets,6.35 □,peg 6.25 □ × 10,"-0.10, chamfered"
+SOCKET,3/8 in sockets,9.53 □,peg 9.40 □ × 13,"-0.13, chamfered"

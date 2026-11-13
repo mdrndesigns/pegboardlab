@@ -1,0 +1,29 @@
+WERA-BIKE12 · Wera Bicycle Set 12 · imperial board A
+holder   ok   218.8 ×  58.1 ×  61.8   171.4 cm³
+spine1   ok    22.0 ×  61.8 ×  23.0     9.1 cm³
+spine2   ok    22.0 ×  61.8 ×  23.0     9.1 cm³
+
+bars: twin · 8 pitches apart (191.0) · bar 22.0 × 61.8 · strip 62 high
+stand: 12 channels at 18 · tray 219 wide, 26 → 49 deep · lip 12 · fins 22.4
+construction: two-part · spine + holder
+screws: 4 × Ø3.5 × 15 csk, head Ø8 · 2 per bar
+spine: 22 × 62 × 5 · pilot Ø2.8 × 11.5: 6.5 into the studs · print 2 (same part)
+studs: 3
+stud_d: 7.8
+stud_len: 18.0
+
+channel (width × foot length) per spanner, lean on the board:
+   6 × 105   6 × 23   lean 11.6°
+   7 × 110   6 × 25   lean 11.4°
+   8 × 115   6.5 × 28   lean 11.7°
+   9 × 120   6.5 × 30   lean 11.5°
+  10 × 125   7.5 × 32   lean 11.3°
+  11 × 135   7.5 × 34   lean 10.6°
+  12 × 148   8 × 36   lean  9.8°
+  13 × 160   8 × 38   lean  9.1°
+  14 × 167   8.5 × 40   lean  8.9°
+  15 × 174   7 × 42   lean  8.7°
+  16 × 182   9.5 × 44   lean  8.4°
+  17 × 190   10 × 46   lean  8.2°
+
+warnings: none

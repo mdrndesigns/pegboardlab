@@ -1,0 +1,74 @@
+board,zone,item,brand,qty,accessory,pegboardlab,settings,x_mm,y_mm,w_mm,h_mm,holes_wide,holes_high
+A,1  CLAMPS · SQUARE · BAG,Tool bag,Bosch,1,Hook · loop,hook · hk_type=loop,"loop 30 wide, reach 40",10,10,220,220,10,10
+A,1  CLAMPS · SQUARE · BAG,End nippers,—,1,Hook · double prong,hook · hk_type=double,"double, gap 20",240,10,60,190,3,8
+A,1  CLAMPS · SQUARE · BAG,Spring clamp L ×2,Irwin,2,Hook · double prong,hook · hk_type=double,"double, gap 60, reach 50",310,10,120,150,6,7
+A,1  CLAMPS · SQUARE · BAG,Spring clamp S ×2,Irwin,2,Hook · double prong,hook · hk_type=double,"double, gap 40",440,10,90,120,4,6
+A,1  CLAMPS · SQUARE · BAG,Combination square,Irwin,1,Hook · J,hook · hk_type=j,"J 25 wide, lip 10",540,10,80,230,4,10
+A,2  BOSCH 12V SYSTEM,GWS 12V grinder,Bosch,1,Holster · saddle,holster · hs_type=saddle,"saddle 44 × 50, h 30",10,250,140,140,6,6
+A,2  BOSCH 12V SYSTEM,Drill bit case,Bosch,1,Tray / bin,tray · tr_type=…,"tray 120 × 40, h 25",160,250,120,140,6,6
+A,2  BOSCH 12V SYSTEM,GKS 12V circular saw,Bosch,1,Holster · saddle,holster · hs_type=saddle,"saddle 50 × 60, h 35",10,400,190,170,8,8
+A,2  BOSCH 12V SYSTEM,Bits · small parts,Bosch,1,Tray / bin,tray · tr_type=…,tray 60 × 60,210,400,70,170,3,8
+A,2  BOSCH 12V SYSTEM,Accessory box,Bosch,1,Tray / bin,tray · tr_type=…,tray 200 × 60 lip 15,10,580,200,110,9,5
+A,2  BOSCH 12V SYSTEM,Glue pen,Bosch,1,Hook · double prong,hook · hk_type=double,"double, gap 24",220,580,60,110,3,5
+A,2  BOSCH 12V SYSTEM,GSR 12V drill,Bosch,1,Holster · saddle,holster · hs_type=saddle,"saddle 44 × 60, h 30",10,700,150,150,7,7
+A,2  BOSCH 12V SYSTEM,GRO 12V rotary,Bosch,1,Holster · saddle,holster · hs_type=saddle,"saddle 40 × 45, h 25",170,700,110,150,5,7
+A,3  IRWIN HAND TOOLS,Chisels ×3 + gouge,Irwin,4,Rack · holes / slots,rack · rk_type=…,rack chisels n=4 d=12 depth 40,300,250,110,300,5,13
+A,3  IRWIN HAND TOOLS,Screwdrivers ×2,Irwin,2,Rack · holes / slots,rack · rk_type=…,rack drivers n=2 d=10,420,250,50,230,3,10
+A,3  IRWIN HAND TOOLS,Marking knife,—,1,Hook · J,hook · hk_type=j,"J 20, lip 8",420,490,50,70,3,3
+A,4  WERA · DRIVE · LEVEL,Tool-Check Plus,Wera,1,Tray / bin,tray · tr_type=…,tray 200 × 48 × 18,490,250,180,60,8,3
+A,4  WERA · DRIVE · LEVEL,Ratchet,Wera,1,Hook · J,hook · hk_type=j,"J 16, lip 10",490,320,55,120,3,6
+A,4  WERA · DRIVE · LEVEL,Hex keys ×9,Wera,9,Rack · holes / slots,rack · rk_type=…,rack hexkeys,555,320,115,120,5,6
+A,4  WERA · DRIVE · LEVEL,Laser level,—,1,Tray / bin,tray · tr_type=…,tray 112 × 112,490,450,100,110,5,5
+A,4  WERA · DRIVE · LEVEL,Future Wera ×6,Wera,1,Rack · holes / slots,rack · rk_type=…,rack drivers n=6 d=10,600,450,75,110,4,5
+A,6  CUT · GRIP · POWER,Pliers ×6 + crimper slot,—,7,Rack · holes / slots,rack · rk_type=…,rack chisels n=7 28 × 14,300,580,260,130,11,6
+A,6  CUT · GRIP · POWER,Work light tube,—,1,Hook · double prong,hook · hk_type=double,"double, gap 236, reach 55",300,720,290,60,13,3
+A,6  CUT · GRIP · POWER,Aviation snips,—,1,Hook · J,hook · hk_type=j,"J 25, lip 12",570,580,50,130,3,6
+A,6  CUT · GRIP · POWER,Scissors,—,1,Hook · J,hook · hk_type=j,J 20,630,580,45,130,2,6
+A,6  CUT · GRIP · POWER,Wrenches ×2 + spare,—,3,Rack · holes / slots,rack · rk_type=…,rack wrenches n=3 d=14,300,790,110,60,5,3
+A,6  CUT · GRIP · POWER,Multitool,—,1,Tray / bin,tray · tr_type=…,cup 42 × 24 × 50,420,790,50,60,3,3
+A,6  CUT · GRIP · POWER,Spare J ×2 (knife · cutter),—,2,Hook · J,hook · hk_type=j,J 20 ×2,480,790,110,60,5,3
+A,6  CUT · GRIP · POWER,Spare J ×2 (quick-draw),—,2,Hook · J,hook · hk_type=j,J 20 ×2,600,720,75,130,4,6
+A,5  MEASURE · MARK  (nearest the bench),Rules 150 · 300,—,2,Magnet strip,magstrip · mg_mode=embed,"magstrip 40 × 160, 4 × Ø10×3",10,870,40,160,2,7
+A,5  MEASURE · MARK  (nearest the bench),Digital caliper,—,1,Holster · saddle,holster · hs_type=saddle,saddle 18 × 26,60,870,45,200,2,9
+A,5  MEASURE · MARK  (nearest the bench),Micrometer,—,1,Hook · J,hook · hk_type=j,"J 20, lip 10",115,870,60,90,3,4
+A,5  MEASURE · MARK  (nearest the bench),Protractor,—,1,Hook · J,hook · hk_type=j,"J 20, lip 10",185,870,90,90,4,4
+A,5  MEASURE · MARK  (nearest the bench),Scriber · feelers,—,4,Rack · holes / slots,rack · rk_type=…,rack drivers n=4 d=8,115,970,110,110,5,5
+A,5  MEASURE · MARK  (nearest the bench),Tape measure,Stanley,1,Holster · saddle,holster · hs_type=saddle,saddle 46 × 78,285,870,70,90,3,4
+A,5  MEASURE · MARK  (nearest the bench),Pens · markers ×8,—,1,Rack · holes / slots,rack · rk_type=…,sockets n=4 rows 2 d=18,365,870,110,110,5,5
+A,5  MEASURE · MARK  (nearest the bench),Test leads · cable,—,1,Clip · cables,clip · cl_type=snap,clip snap n=3 d=5,485,870,60,110,3,5
+A,5  MEASURE · MARK  (nearest the bench),Zone labels ×6,mdrn,6,Label plate,plate · pl_w × pl_h,plate 120 × 28 each,555,870,120,110,6,5
+A,5  MEASURE · MARK  (nearest the bench),Spare (future measure),—,2,Hook · J,hook · hk_type=j,J 20 ×2,235,970,120,110,6,5
+C,8  KREG · GUIDES,Rip-Cut guide · J ×2,Kreg,2,Hook · J,hook · hk_type=j,"J 30 ×2, 400 apart",20,15,400,50,15,4
+C,8  KREG · GUIDES,Pocket-hole jig,Kreg,1,Tray / bin,tray · tr_type=…,bin 142 × 72 × 40,25,80,170,320,7,24
+C,8  KREG · GUIDES,Clamp triangle,Kreg,1,Hook · J,hook · hk_type=j,J 20,215,80,110,110,5,9
+C,8  KREG · GUIDES,Vernier caliper,—,1,Holster · saddle,holster · hs_type=saddle,saddle 24 × 20,215,200,50,200,2,15
+C,8  KREG · GUIDES,Rule 600,—,1,Magnet strip,magstrip · mg_mode=embed,magstrip 30 × 300,340,80,40,330,2,25
+C,8  KREG · GUIDES,Rule 1000 (alu) · J ×2,—,2,Hook · J,hook · hk_type=j,J 35 ×2,395,80,40,330,2,25
+C,9  RULES · LAYOUT,Dividers,—,1,Hook · double prong,hook · hk_type=double,"double, gap 24",25,440,70,230,3,17
+C,9  RULES · LAYOUT,Rule 300,—,1,Magnet strip,magstrip · mg_mode=embed,magstrip 30 × 300,120,440,40,330,2,25
+C,9  RULES · LAYOUT,Compass · scribe,—,1,Rack · holes / slots,rack · rk_type=…,rack drivers n=3,190,440,90,150,4,11
+C,9  RULES · LAYOUT,Utility blades ×2,Sky,2,Hook · J,hook · hk_type=j,J 20 (pack hole),300,440,60,130,3,10
+C,9  RULES · LAYOUT,Scraper,—,1,Hook · J,hook · hk_type=j,J 20,370,440,60,130,3,10
+C,9  RULES · LAYOUT,Label plates ×5,mdrn,5,Label plate,plate · pl_w × pl_h,plate 90 × 24,190,700,240,110,9,9
+C,10 TAPE · ADHESIVE,Masking tape ×3,—,3,Hook · peg (rolls),hook · hk_type=peg,"peg Ø22 × 140, lip",25,860,150,180,6,14
+C,10 TAPE · ADHESIVE,Double-sided tape ×2,—,2,Hook · peg (rolls),hook · hk_type=peg,peg Ø22 × 90,190,860,110,110,5,9
+C,10 TAPE · ADHESIVE,Glue dots · stickers,Bostik,2,Hook · J,hook · hk_type=j,J 20,310,860,60,140,3,11
+C,10 TAPE · ADHESIVE,Brush 100,—,1,Hook · J,hook · hk_type=j,"J 25, lip 14",380,860,55,200,3,15
+C,10 TAPE · ADHESIVE,Sanding block,—,1,Tray / bin,tray · tr_type=…,tray 100 × 60,190,990,110,110,5,9
+C,11 BINS (existing),Blue bins ×6 (existing),—,6,existing / keep,—,keep · or GF 2×1 ×3,25,1215,400,270,15,20
+C,12 GRIDFINITY · SMALL PARTS,Gridfinity 2×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 2×1 tilt 10 lip 4,25,1520,200,100,8,8
+C,12 GRIDFINITY · SMALL PARTS,Gridfinity 2×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 2×1 tilt 10 lip 4,235,1520,200,100,8,8
+C,12 GRIDFINITY · SMALL PARTS,Gridfinity 2×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 2×1 tilt 10 lip 4,25,1640,200,100,8,8
+C,12 GRIDFINITY · SMALL PARTS,Gridfinity 2×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 2×1 tilt 10 lip 4,235,1640,200,100,8,8
+B,13 LONG TOOLS · SAWS · CLAMPS,F-clamps ×4,—,4,Hook · J,hook · hk_type=j,J 30 lip 20 ×4,20,20,500,260,19,19
+B,13 LONG TOOLS · SAWS · CLAMPS,Straightedge 1000,—,2,Hook · J,hook · hk_type=j,J 35 ×2,560,20,1020,60,38,5
+B,13 LONG TOOLS · SAWS · CLAMPS,Pull saw · hand saws,—,2,Hook · J,hook · hk_type=j,"J 30 ×2, lip 14",560,100,400,180,15,14
+B,13 LONG TOOLS · SAWS · CLAMPS,Extension cord,—,1,Holster · ring,holster · hs_type=ring,ring Ø140,1000,100,180,180,7,14
+B,13 LONG TOOLS · SAWS · CLAMPS,Label plates ×3,mdrn,3,Label plate,plate · pl_w × pl_h,plate 150 × 40,1220,100,160,60,6,5
+B,14 GRIDFINITY SHELF ROW · hardware,Gridfinity 4×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 4×1 magnets,20,320,176,100,7,8
+B,14 GRIDFINITY SHELF ROW · hardware,Gridfinity 4×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 4×1 magnets,220,320,176,100,7,8
+B,14 GRIDFINITY SHELF ROW · hardware,Gridfinity 4×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 4×1 magnets,420,320,176,100,7,8
+B,14 GRIDFINITY SHELF ROW · hardware,Gridfinity 4×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 4×1 magnets,620,320,176,100,7,8
+B,14 GRIDFINITY SHELF ROW · hardware,Gridfinity 4×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 4×1 magnets,820,320,176,100,7,8
+B,14 GRIDFINITY SHELF ROW · hardware,Gridfinity 4×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 4×1 magnets,1020,320,176,100,7,8
+B,14 GRIDFINITY SHELF ROW · hardware,Gridfinity 4×1,—,1,Gridfinity shelf,gridfinity · gf_nx × gf_ny,gf 4×1 magnets,1220,320,176,100,7,8

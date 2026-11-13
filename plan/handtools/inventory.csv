@@ -1,0 +1,8 @@
+id,item,n,family,status,holder_g,spine_g,holder_bed,spine_bed,screws,unsupported,valid,open_edges,interference,warnings
+F60,Arm · flat · reach 60 (rack bearer),10,arm,ok,12.5,5.8,64 × 62 × 22,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",62.3,True,0,0.0,Plate heightened to 61.8 to cover the pattern.
+A60,Arm · lip · reach 60,2,arm,ok,13.4,5.8,64 × 62 × 22,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",62.3,True,0,0.0,Plate heightened to 61.8 to cover the pattern.
+N30,Hook · narrow · reach 30,5,arm,ok,5.4,5.8,34 × 62 × 22,22 × 62 × 23,"2 × Ø3.5 × 15 csk, head Ø8",13.9,True,0,0.0,Plate heightened to 61.8 to cover the pattern.
+R-PLI,Rack · pliers + cutters ×6 · 12 pitches,2,shelf,ok,48.1,0,297 × 231 × 18,297 × 231 × 18,4 × Ø3.5 csk into the arm tops,3.9,True,0,0.0,
+R-DRV,"Rack · drivers ×13, two staggered rows · 14 pitches",1,shelf,ok,71.4,0,336 × 258 × 18,336 × 258 × 18,4 × Ø3.5 csk into the arm tops,3.9,True,0,0.0,
+R-HEX,Rack · Wera Hex-Plus L-keys ×9 · 8 pitches,1,shelf,ok,45.1,0,229 × 56 × 18,229 × 56 × 18,4 × Ø3.5 csk into the arm tops,3.9,True,0,0.0,
+R-MEAS,Rack · caliper · markers · scriber · tape · 10 pitches,1,shelf,ok,54.6,0,277 × 56 × 18,277 × 56 × 18,4 × Ø3.5 csk into the arm tops,3.9,True,0,0.0,
